@@ -6,16 +6,23 @@ page = st.sidebar.selectbox('Choose a section', ['About Us', 'FAQs', 'Submit Fee
 
 if page == 'About Us':
     st.header('About Us')
-    # Add your columns here
     col1, col2, col3 = st.columns(3)
-    col1.image("https://s3.amazonaws.com/dq-content/901/Charles_Bingley.png")
-    col1.header("Charles Bingley")
-    col2.image("https://s3.amazonaws.com/dq-content/901/Elizabeth_Bennet.png")
-    col2.header('Elizabeth Bennet')
-    col3.image("https://s3.amazonaws.com/dq-content/901/Georgiana_Darcy.png")
-    col3.header('Georgiana_Darcy.png')
-    st.write('test')
-if page == 'FAQs':
+    with col1:
+        st.image('https://s3-us-east-2.amazonaws.com/dq-authoring-tmp-data/901-1114/Elizabeth_Bennet.png')
+        st.header('Elizabeth Bennet')
+        st.write('Founder and CEO, Elizabeth is passionate about bringing customers flavorful and delicious coffee.')
+    
+    with col2:
+        st.image('https://s3-us-east-2.amazonaws.com/dq-authoring-tmp-data/901-1114/Charles_Bingley.png')
+        st.header('Charles Bingley')
+        st.write('Marketing Director and Social Media Expert, Charles helps the world know about our great new flavors!')
+    
+    with col3:
+        st.image('https://s3-us-east-2.amazonaws.com/dq-authoring-tmp-data/901-1114/Georgiana_Darcy.png')
+        st.header('Georgiana Darcy')
+        st.write('Georgiana is the creative genius behind the scenes!')
+        
+    if page == 'FAQs':
     st.header("FAQs")
 if page == 'Submit Feedback':
     st.header("Submit Feedback")
