@@ -19,3 +19,5 @@ if page == 'FAQs':
 if page == 'Submit Feedback':
     st.header("Submit Feedback")
 
+st.write('test')
+
