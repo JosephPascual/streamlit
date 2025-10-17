@@ -4,6 +4,9 @@ st.sidebar.title("Navigation")
 
 page = st.sidebar.selectbox('Choose a section', ['About Us', 'FAQs', 'Submit Feedback'])
 
+
+
+
 if page == 'About Us':
     st.header('About Us')
     col1, col2, col3 = st.columns(3)
@@ -22,14 +25,16 @@ if page == 'About Us':
         st.header('Georgiana Darcy')
         st.write('Georgiana is the creative genius behind the scenes!')
 
+def general_faqs:
+    st.header("FAQs")
+    bean_source_expander = st.expander("Where do you source your coffee beans?")
+    with bean_source_expander:
+        st.write('Our coffee beans are ethically sourced from family-owned farms and cooperatives across various coffee-growing regions, ensuring quality and sustainability in every cup.')
+    roast_expander = st.expander('How do you roast your beans?')
+    with roast_expander:
+        st.write("We employ a combination of traditional and modern roasting techniques, meticulously adjusting the roast profile for each batch to bring out the unique flavors and aromas of the beans.")
 if page == 'FAQs':
-        st.header("FAQs")
-        bean_source_expander = st.expander("Where do you source your coffee beans?")
-        with bean_source_expander:
-            st.write('Our coffee beans are ethically sourced from family-owned farms and cooperatives across various coffee-growing regions, ensuring quality and sustainability in every cup.')
-        roast_expander = st.expander('How do you roast your beans?')
-        with roast_expander:
-            st.write("We employ a combination of traditional and modern roasting techniques, meticulously adjusting the roast profile for each batch to bring out the unique flavors and aromas of the beans.")
+    general_faqs()
 
 if page == 'Submit Feedback':
     st.header("Submit Feedback")
