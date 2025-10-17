@@ -21,9 +21,9 @@ if page == 'About Us':
         st.image('https://s3-us-east-2.amazonaws.com/dq-authoring-tmp-data/901-1114/Georgiana_Darcy.png')
         st.header('Georgiana Darcy')
         st.write('Georgiana is the creative genius behind the scenes!')
-        
-    if page == 'FAQs':
-    st.header("FAQs")
+
+if page == 'FAQs':
+        st.header("FAQs")
 if page == 'Submit Feedback':
     st.header("Submit Feedback")
 
