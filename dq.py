@@ -14,10 +14,11 @@ if page == 'About Us':
     col2.header('Elizabeth Bennet')
     col3.image("https://s3.amazonaws.com/dq-content/901/Georgiana_Darcy.png")
     col3.header('Georgiana_Darcy.png')
+    st.write('test')
 if page == 'FAQs':
     st.header("FAQs")
 if page == 'Submit Feedback':
     st.header("Submit Feedback")
 
-st.write('test')
+
 
