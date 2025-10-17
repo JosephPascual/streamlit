@@ -1,3 +1,5 @@
+import streamlit as st
+
 st.sidebar.title("Navigation")
 
 page = st.sidebar.selectbox('Choose a section', ['About Us', 'FAQs', 'Submit Feedback'])
