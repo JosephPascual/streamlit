@@ -25,7 +25,7 @@ if page == 'About Us':
         st.header('Georgiana Darcy')
         st.write('Georgiana is the creative genius behind the scenes!')
 
-def general_faqs:
+def general_faqs():
     st.header("FAQs")
     bean_source_expander = st.expander("Where do you source your coffee beans?")
     with bean_source_expander:
