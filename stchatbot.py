@@ -38,7 +38,7 @@ class ConversationManager:
         }
         self.system_message = self.system_messages["creative_assistant"]  # Default persona
     
-     def chat_completion(self, prompt, temperature=None, max_tokens=None):
+    def chat_completion(self, prompt, temperature=None, max_tokens=None):
         temperature = temperature if temperature is not None else self.temperature
         max_tokens = max_tokens if max_tokens is not None else self.max_tokens
         # Append the user's prompt to conversation_history
