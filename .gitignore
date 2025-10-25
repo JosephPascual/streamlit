@@ -1,0 +1,26 @@
+# API Keys and secrets - NEVER commit these!
+.env
+TOGETHER_API_KEY.txt
+*.env
+
+# Python stuff
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+```
+
+3. **Save it**
+
+4. **Commit this .gitignore file to GitHub**
+
+**Important:** If you've ALREADY committed your .txt file to GitHub, it's still in your repo history! You'd need to remove it from history (more advanced).
+
+**Want to switch to .env?** Here's how:
+
+1. Create a `.env` file with:
+```
+TOGETHER_API_KEY=your-api-key-here
