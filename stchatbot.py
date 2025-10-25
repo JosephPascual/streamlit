@@ -1,4 +1,4 @@
-from openai import OpenAI
+from together import Together
 import tiktoken
 import json
 from datetime import datetime
@@ -26,6 +26,7 @@ class ConversationManager:
             base_url=base_url
         )
 
+
         self.model = model if model else DEFAULT_MODEL
         self.temperature = temperature if temperature else DEFAULT_TEMPERATURE
         self.max_tokens = max_tokens if max_tokens else DEFAULT_MAX_TOKENS
@@ -37,7 +38,8 @@ class ConversationManager:
             "custom": "Enter your custom system message here."
         }
         self.system_message = self.system_messages["creative_assistant"]  # Default persona
-    
+        self.conversation_history = [{"role": "system", "content": self.system_message}]
+
     def chat_completion(self, prompt, temperature=None, max_tokens=None):
         temperature = temperature if temperature is not None else self.temperature
         max_tokens = max_tokens if max_tokens is not None else self.max_tokens
@@ -57,8 +59,7 @@ class ConversationManager:
             return None
         ai_response = response.choices[0].message.content
         self.conversation_history.append({"role": "assistant", "content": ai_response})
-        
-        self.save_conversation_history()
+
         return ai_response
     
     def count_tokens(self, text):
@@ -96,13 +97,10 @@ class ConversationManager:
             self.conversation_history[0]["content"] = self.system_message
         else:
             self.conversation_history.insert(0, {"role": "system", "content": self.system_message})
-    
-        print(f"An unknown error occurre while saving the conversation history: {e}")
        
     def reset_conversation_history(self):
-        self.conversation_history = [{"role": "system", "content": self.system_message}]
         try:
-            self.save_conversation_history()  # Attempt to save the reset history to the file
+            self.conversation_history = [{"role": "system", "content": self.system_message}]  # Attempt to save the reset history to the file
         except Exception as e:
             print(f"An unexpected error occurred while resetting the conversation history: {e}")
 
