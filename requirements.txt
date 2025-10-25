@@ -1,3 +1,4 @@
 together
 tiktoken
 streamlit
+dotenv
