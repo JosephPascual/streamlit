@@ -1,11 +1,16 @@
-from together import Together
-import tiktoken
-import json
-from datetime import datetime
 import os
+import json
+import tiktoken
 import streamlit as st
+from together import Together
+from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
-DEFAULT_API_KEY = os.environ.get("TOGETHER_API_KEY")
+try:
+    DEFAULT_API_KEY = st.secrets["TOGETHER_API_KEY"]
+except (KeyError, FileNotFoundError):
+    DEFAULT_API_KEY = os.environ.get("TOGETHER_API_KEY")
 DEFAULT_BASE_URL = "https://api.together.xyz/v1"
 DEFAULT_MODEL = "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo"
 DEFAULT_TEMPERATURE = 0.7
@@ -25,7 +30,6 @@ class ConversationManager:
             api_key=api_key,
             base_url=base_url
         )
-
 
         self.model = model if model else DEFAULT_MODEL
         self.temperature = temperature if temperature else DEFAULT_TEMPERATURE
@@ -107,10 +111,27 @@ class ConversationManager:
         
 # Working Code Below
 
+# Instantiate session_state
 if 'chat_manager' not in st.session_state:
     st.session_state['chat_manager'] = ConversationManager()
-    
+# Instatiate ConversationManager()
 cm = st.session_state['chat_manager']
 
+# Title
 st.title("Joe's Chatbot")
 
+# Sidebar
+with st.sidebar:
+    st.title("Settings")
+    token_budget = st.slider("Token Budget", min_value=100, max_value=8000, value=4200, step=100)
+    temperature = st.slider("Temperature", min_value=0.0, max_value=2.0, value=0.7, step=0.1)
+    persona = st.selectbox("Persona", options=[role for role in cm.system_messages])
+    if persona == "custom":
+        custom_message = st.text_input("Enter custom system message:")
+        if st.button("Set Custom Message:"):
+            cm.set_custom_system_message(custom_message)
+    else:
+        cm.set_persona(persona)
+    
+    
+    
