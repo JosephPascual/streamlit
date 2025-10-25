@@ -107,4 +107,10 @@ class ConversationManager:
         
 # Working Code Below
 
+if 'chat_manager' not in st.session_state:
+    st.session_state['chat_manager'] = ConversationManager()
+    
+cm = st.session_state['chat_manager']
+
 st.title("Joe's Chatbot")
+
