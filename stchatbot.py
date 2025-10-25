@@ -97,7 +97,7 @@ class ConversationManager:
         else:
             self.conversation_history.insert(0, {"role": "system", "content": self.system_message})
     
-          print(f"An unknown error occurre while saving the conversation history: {e}")
+        print(f"An unknown error occurre while saving the conversation history: {e}")
        
     def reset_conversation_history(self):
         self.conversation_history = [{"role": "system", "content": self.system_message}]
